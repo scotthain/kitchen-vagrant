@@ -96,6 +96,11 @@ module Kitchen
         if instance.suite.roles_path
           arr << %{    chef.roles_path = "#{instance.suite.roles_path}"}
         end
+        if chefproxy
+          arr << %{    chef.http_proxy = "#{chefproxy}"}
+          arr << %{    chef.http_proxy = "#{chefproxy}"}
+        end
+
         arr << %{  end}
       end
 
@@ -130,6 +135,10 @@ module Kitchen
 
       def berksfile
         File.join(config[:kitchen_root], "Berksfile")
+      end
+
+      def chefproxy
+        config[:chef_proxy] || nil
       end
 
       def provider
