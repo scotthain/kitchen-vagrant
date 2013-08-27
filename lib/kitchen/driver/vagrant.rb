@@ -145,6 +145,7 @@ module Kitchen
       end
 
       def creator
+				debug("Config: " +  config.to_s)
         Kitchen::Vagrant::VagrantfileCreator.new(instance, config)
       end
 
